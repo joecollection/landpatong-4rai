@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Land 4 Rai — CBD Patong Beach | Investment Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-pale: #F7F0DC;
+  --gold-deep: #8B6914;
+  --navy: #06111F;
+  --navy-mid: #0D2140;
+  --navy-light: #142D52;
+  --navy-panel: #0A1A30;
+  --cream: #FAF8F3;
+  --cream-mid: #F0EAD8;
+  --text-light: #E8E4DA;
+  --text-muted: rgba(232,228,218,0.55);
+  --border-gold: rgba(201,168,76,0.25);
+  --border-light: rgba(255,255,255,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--navy);
+  color: var(--text-light);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 2px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 4rem; height: 64px;
+  background: rgba(6,17,31,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border-gold);
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; }
+.nav-logo span { display: block; font-size: 8px; letter-spacing: 5px; color: rgba(201,168,76,0.5); font-family: 'Outfit', sans-serif; font-weight: 300; margin-top: -2px; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 11px; font-weight: 400; color: var(--text-muted); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { font-size: 11px; font-weight: 500; color: var(--gold); border: 0.5px solid var(--gold); padding: 7px 18px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+.nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 120px 4rem 80px;
+  background: linear-gradient(160deg, #06111F 0%, #0D2140 50%, #06111F 100%);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; top: -200px; right: -200px;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute; bottom: -300px; left: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,33,64,0.8) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); border: 0.5px solid var(--border-gold);
+  padding: 6px 16px; margin-bottom: 2rem;
+  width: fit-content;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-content { position: relative; z-index: 2; max-width: 780px; }
+.hero-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.8s 0.1s ease both; }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 300;
+  line-height: 1.0;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  opacity: 0; animation: fadeUp 0.9s 0.2s ease both;
+}
+.hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-title-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300; font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.9s 0.3s ease both;
+}
+.hero-desc { font-size: 15px; font-weight: 300; color: var(--text-muted); max-width: 540px; line-height: 1.8; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.9s 0.4s ease both; }
+
+.hero-kpis { display: flex; gap: 0; opacity: 0; animation: fadeUp 0.9s 0.5s ease both; }
+.hero-kpi {
+  padding: 1.5rem 2rem;
+  border: 0.5px solid var(--border-gold);
+  border-right: none;
+  position: relative;
+}
+.hero-kpi:last-child { border-right: 0.5px solid var(--border-gold); }
+.hero-kpi::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.kpi-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500; color: var(--gold); line-height: 1; }
+.kpi-label { font-size: 10px; font-weight: 400; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+
+.hero-right {
+  position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
+  text-align: right; z-index: 2;
+  opacity: 0; animation: fadeRight 1s 0.6s ease both;
+}
+.hero-price-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+.hero-price { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 600; color: var(--gold); line-height: 1; }
+.hero-price-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.hero-divider { width: 1px; height: 80px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 1.5rem auto; }
+.hero-yield { font-size: 13px; color: var(--text-light); }
+.hero-yield strong { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; color: var(--gold-light); display: block; }
+
+@keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+@keyframes fadeRight { from { opacity:0; transform: translateY(-50%) translateX(24px); } to { opacity:1; transform: translateY(-50%) translateX(0); } }
+
+/* ── SECTIONS ── */
+section { padding: 100px 4rem; position: relative; }
+section:nth-child(even) { background: var(--navy-panel); }
+.section-tag { font-size: 10px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 12px; }
+.section-tag::before { content: ''; width: 32px; height: 0.5px; background: var(--gold); }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.1; color: #fff; margin-bottom: 1rem; }
+.section-title em { font-style: italic; color: var(--gold-light); }
+.section-lead { font-size: 15px; font-weight: 300; color: var(--text-muted); max-width: 600px; line-height: 1.8; margin-bottom: 3rem; }
+
+/* ── PROPERTY OVERVIEW ── */
+.property-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.prop-facts { display: flex; flex-direction: column; gap: 0; }
+.prop-fact {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1rem 0; border-bottom: 0.5px solid var(--border-light);
+}
+.prop-fact:first-child { border-top: 0.5px solid var(--border-light); }
+.fact-label { font-size: 11px; font-weight: 400; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+.fact-value { font-size: 15px; font-weight: 500; color: var(--text-light); text-align: right; max-width: 60%; }
+.fact-value.gold { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 20px; }
+
+.location-card {
+  background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02));
+  border: 0.5px solid var(--border-gold);
+  padding: 2rem;
+  position: relative;
+}
+.location-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.location-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); margin-bottom: 1.5rem; }
+.location-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 1rem; }
+.loc-icon { width: 28px; height: 28px; border: 0.5px solid var(--border-gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; color: var(--gold); }
+.loc-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.loc-text strong { color: var(--text-light); display: block; font-size: 13px; font-weight: 500; }
+
+/* ── MAP PLACEHOLDER ── */
+.map-visual {
+  position: relative; height: 320px;
+  background: linear-gradient(135deg, #0D2140, #06111F);
+  border: 0.5px solid var(--border-gold); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.map-visual svg { width: 100%; height: 100%; }
+
+/* ── DEVELOPMENT SCENARIOS ── */
+.scenarios-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; background: var(--border-gold); border: 0.5px solid var(--border-gold); }
+.scenario-card {
+  background: var(--navy);
+  padding: 2.5rem 2rem;
+  cursor: pointer; transition: background 0.3s;
+  position: relative; overflow: hidden;
+}
+.scenario-card:hover, .scenario-card.active { background: var(--navy-light); }
+.scenario-card.featured { background: linear-gradient(135deg, #0D2140, #142D52); }
+.scenario-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+.sc-badge { font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; margin-bottom: 1rem; display: inline-block; }
+.sc-badge.rec { background: var(--gold); color: var(--navy); }
+.sc-badge.alt { background: rgba(201,168,76,0.15); color: var(--gold); border: 0.5px solid var(--border-gold); }
+.sc-icon { font-size: 28px; margin-bottom: 1rem; }
+.sc-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: #fff; margin-bottom: 0.5rem; }
+.sc-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
+.sc-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border-light); }
+.sc-metric-val { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--gold); }
+.sc-metric-lbl { font-size: 10px; color: var(--text-muted); letter-spacing: 0.5px; margin-top: 2px; }
+.sc-gfa { font-size: 12px; color: var(--text-muted); margin-bottom: 1rem; border-left: 2px solid var(--gold-deep); padding-left: 10px; }
+
+/* ── FINANCIAL MODEL ── */
+.fin-section { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.fin-table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead tr { border-bottom: 0.5px solid var(--border-gold); }
+th { padding: 10px 12px; font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); text-align: left; }
+td { padding: 12px; color: var(--text-muted); border-bottom: 0.5px solid rgba(255,255,255,0.05); vertical-align: middle; }
+.best-row td { color: var(--text-light); background: rgba(201,168,76,0.05); }
+.best-row td:first-child { border-left: 2px solid var(--gold); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; font-family: 'Outfit', sans-serif; }
+td.highlight { color: var(--gold); font-weight: 500; }
+
+.irr-chart { display: flex; flex-direction: column; gap: 16px; }
+.irr-item { }
+.irr-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12px; }
+.irr-name { color: var(--text-muted); }
+.irr-value { color: var(--gold); font-weight: 500; }
+.irr-track { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+.irr-fill { height: 100%; background: linear-gradient(90deg, var(--gold-deep), var(--gold)); border-radius: 2px; width: 0; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); }
+
+/* ── HEIGHT LAW ── */
+.height-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.height-card {
+  padding: 2.5rem 2rem; border: 0.5px solid var(--border-light);
+  position: relative; text-align: center;
+}
+.height-before { opacity: 0.6; }
+.height-after { border-color: var(--border-gold); background: rgba(201,168,76,0.04); }
+.height-after::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.h-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+.h-val { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; line-height: 1; color: #fff; }
+.h-val.gold { color: var(--gold); }
+.h-unit { font-size: 20px; }
+.h-sub { font-size: 13px; color: var(--text-muted); margin-top: 0.5rem; }
+.h-gfa { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold-light); margin-top: 1rem; }
+.h-uplift {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  margin-top: 2rem; padding: 1.5rem; background: rgba(201,168,76,0.08); border: 0.5px solid var(--border-gold);
+}
+.h-uplift-arrow { font-family: 'Cormorant Garamond', serif; font-size: 48px; color: var(--gold); }
+.h-uplift-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.h-uplift-text strong { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--gold); display: block; line-height: 1; }
+
+/* ── RISK ── */
+.risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-light); border: 0.5px solid var(--border-light); }
+.risk-item { background: var(--navy); padding: 2rem 1.5rem; }
+.risk-level { font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; display: inline-block; margin-bottom: 1rem; }
+.risk-level.low { background: rgba(99,153,34,0.15); color: #8BC34A; border: 0.5px solid rgba(99,153,34,0.3); }
+.risk-level.med { background: rgba(239,159,39,0.15); color: #EF9F27; border: 0.5px solid rgba(239,159,39,0.3); }
+.risk-level.high { background: rgba(226,75,74,0.15); color: #E24B4A; border: 0.5px solid rgba(226,75,74,0.3); }
+.risk-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #fff; margin-bottom: 0.5rem; }
+.risk-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── TIMELINE ── */
+.timeline { position: relative; }
+.tl-line { position: absolute; left: 120px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1)); }
+.tl-item { display: grid; grid-template-columns: 120px 40px 1fr; align-items: start; margin-bottom: 3rem; position: relative; }
+.tl-date { font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 1px; padding-top: 3px; text-align: right; padding-right: 24px; }
+.tl-dot-wrap { display: flex; flex-direction: column; align-items: center; }
+.tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 2px solid var(--navy); box-shadow: 0 0 12px rgba(201,168,76,0.4); flex-shrink: 0; margin-top: 4px; }
+.tl-content { padding-left: 24px; }
+.tl-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: #fff; margin-bottom: 0.25rem; }
+.tl-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── VERDICT ── */
+.verdict-section {
+  background: linear-gradient(160deg, #0D2140, #06111F, #0D2140);
+  text-align: center; padding: 120px 4rem;
+  position: relative; overflow: hidden;
+}
+.verdict-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.verdict-eyebrow { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.verdict-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+.verdict-title em { font-style: italic; color: var(--gold-light); }
+.verdict-desc { font-size: 15px; font-weight: 300; color: var(--text-muted); max-width: 600px; margin: 0 auto 3rem; line-height: 1.8; }
+.verdict-stats { display: flex; justify-content: center; gap: 0; margin-bottom: 3rem; }
+.v-stat { padding: 2rem 3rem; border: 0.5px solid var(--border-gold); border-right: none; position: relative; }
+.v-stat:last-child { border-right: 0.5px solid var(--border-gold); }
+.v-stat::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 20px; height: 1px; background: var(--gold); }
+.v-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; color: var(--gold); line-height: 1; }
+.v-lbl { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-top: 6px; }
+.verdict-rec {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--gold); color: var(--navy);
+  font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  padding: 16px 36px;
+}
+.verdict-rec::before { content: '★'; font-size: 14px; }
+.verdict-rec::after { content: '★'; font-size: 14px; }
+
+/* ── CONTACT ── */
+.contact-section {
+  background: var(--navy-panel); padding: 80px 4rem;
+  border-top: 0.5px solid var(--border-gold);
+}
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.contact-logo { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
+.contact-tagline { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); }
+.contact-divider { width: 48px; height: 1px; background: var(--gold); margin: 1.5rem 0; }
+.contact-info-list { display: flex; flex-direction: column; gap: 1rem; }
+.contact-info-item { display: flex; gap: 1rem; align-items: center; }
+.ci-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); width: 60px; flex-shrink: 0; }
+.ci-value { font-size: 15px; color: var(--text-light); }
+.disclaimer { font-size: 11px; color: rgba(232,228,218,0.3); line-height: 1.7; margin-top: 2rem; border-top: 0.5px solid var(--border-light); padding-top: 1.5rem; }
+
+/* ── DIVIDERS ── */
+.gold-rule { width: 100%; height: 0.5px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0; }
+
+/* ── PRINT ── */
+@media print {
+  nav { display: none; }
+  section, .hero { padding: 60px 3rem; page-break-inside: avoid; }
+  .scenarios-grid { grid-template-columns: 1fr 1fr; }
+  .fin-section { grid-template-columns: 1fr; }
+}
+
+/* ── FADE IN ANIMATION ── */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+
+
+/* ════════════════════════════════════════════════════════════════
+   ── FULLY RESPONSIVE MEDIA QUERIES (มือถือ & แท็บเล็ต) ──
+   ════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  nav { padding: 0 2rem; }
+  .hero { padding: 140px 2rem 60px; min-height: auto; }
+  .hero-right { position: static; transform: none; text-align: left; margin-top: 3rem; display: flex; flex-direction: column; align-items: flex-start; }
+  .hero-divider { margin: 1.5rem 0; width: 80px; height: 1px; background: linear-gradient(to right, var(--gold), transparent); }
+  section { padding: 80px 2rem; }
+  .property-layout, .fin-section, .height-compare, .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  /* Navigation */
+  nav { position: static; height: auto; padding: 1rem 1.5rem; flex-direction: column; gap: 1rem; align-items: center; text-align: center; }
+  .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem 1.5rem; width: 100%; }
+  .nav-links a { font-size: 10px; }
+  .nav-cta { width: 100%; text-align: center; padding: 10px; box-sizing: border-box; }
+
+  /* Hero Section */
+  .hero { padding-top: 40px; padding-bottom: 60px; }
+  .hero-title { font-size: 46px; }
+  .hero-title-sub { font-size: 24px; margin-bottom: 1.5rem; }
+  .hero-kpis { display: grid; grid-template-columns: 1fr 1fr; border: 0.5px solid var(--border-gold); }
+  .hero-kpi { border: none !important; padding: 1.2rem; border-bottom: 0.5px solid var(--border-gold) !important; border-right: 0.5px solid var(--border-gold) !important; }
+  .hero-kpi:nth-child(2n) { border-right: none !important; }
+  .hero-kpi:nth-child(3), .hero-kpi:nth-child(4) { border-bottom: none !important; }
+  
+  /* Layout Structures */
+  section { padding: 60px 1.5rem; }
+  .scenarios-grid { grid-template-columns: 1fr; gap: 1rem; background: transparent; border: none; }
+  .scenario-card { border: 0.5px solid var(--border-gold); padding: 2rem 1.5rem; }
+  .sc-metrics { grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; }
+  .sc-metric-val { font-size: 18px; }
+  
+  /* Responsive Table with Horizontal Scroll */
+  .fin-table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 2rem; border: 0.5px solid var(--border-gold); }
+  table { min-width: 620px; }
+  
+  /* Map Visualization Aspect Ratio */
+  .map-visual { height: auto; aspect-ratio: 500 / 320; }
+  
+  /* Risk Matrix */
+  .risk-grid { grid-template-columns: 1fr; gap: 1rem; background: transparent; border: none; }
+  .risk-item { border: 0.5px solid var(--border-light); }
+
+  /* Timeline Grid Overrides */
+  .tl-line { left: 16px; }
+  .tl-item { grid-template-columns: 1fr; gap: 0.25rem; margin-bottom: 2.5rem; padding-left: 40px; }
+  .tl-date { text-align: left; padding-right: 0; font-size: 13px; margin-bottom: 0.5rem; }
+  .tl-dot-wrap { position: absolute; left: 11px; top: 4px; }
+  .tl-content { padding-left: 0; }
+
+  /* Verdict Committee Summary */
+  .verdict-section { padding: 80px 1.5rem; }
+  .verdict-stats { display: grid; grid-template-columns: 1fr 1fr; border: 0.5px solid var(--border-gold); }
+  .v-stat { border: none !important; padding: 1.5rem 1rem; border-bottom: 0.5px solid var(--border-gold) !important; border-right: 0.5px solid var(--border-gold) !important; }
+  .v-stat:nth-child(2n) { border-right: none !important; }
+  .v-stat:nth-child(3), .v-stat:nth-child(4) { border-bottom: none !important; }
+  .verdict-rec { width: 100%; justify-content: center; padding: 14px 20px; font-size: 11px; box-sizing: border-box; }
+  
+  /* Contact Layout */
+  .contact-section { padding: 60px 1.5rem; }
+  .contact-layout { gap: 4rem; }
+}
+
+@media (max-width: 480px) {
+  section { padding: 50px 1.25rem; }
+  .hero { padding: 40px 1.25rem 50px; }
+  .hero-title { font-size: 40px; }
+  .hero-price { font-size: 44px; }
+  .v-num { font-size: 32px; }
+  .h-val { font-size: 56px; }
+  .h-uplift { flex-direction: column; text-align: center; gap: 0.75rem; padding: 1.2rem; }
+  
+  /* Property Overview Fact List Column Stack */
+  .prop-fact { flex-direction: column; align-items: flex-start; gap: 4px; padding: 0.85rem 0; }
+  .fact-value { text-align: left; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Joe Collection<span>Real Estate</span></div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#scenarios">Development</a></li>
+    <li><a href="#financials">Financials</a></li>
+    <li><a href="#height">Upside</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Enquire Now</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Confidential Investment Memorandum · 2025</div>
+    <div class="hero-title"><em>Land 4 Rai</em></div>
+    <div class="hero-title-sub">CBD Corner Plot, Patong Beach</div>
+    <div class="hero-desc">A rare 6,400 sq.m dual-frontage development site in the absolute heart of Patong — Phuket's premier tourist district — offered with immediate income and transformational height-law upside.</div>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><div class="kpi-num">6,400</div><div class="kpi-label">Sq.m GLA</div></div>
+      <div class="hero-kpi"><div class="kpi-num">฿72M</div><div class="kpi-label">Annual Income</div></div>
+      <div class="hero-kpi"><div class="kpi-num">60 m</div><div class="kpi-label">Proposed Height</div></div>
+      <div class="hero-kpi"><div class="kpi-num">19–22%</div><div class="kpi-label">Target IRR</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-price-label">Asking Price</div>
+    <div class="hero-price">฿2,500<span style="font-size:32px">M</span></div>
+    <div class="hero-price-sub">฿390,625 / sq.m · ฿1.56M / sq.wah</div>
+    <div class="hero-divider"></div>
+    <div class="hero-yield"><strong>2.88%</strong>Current Running Yield</div>
+  </div>
+</div>
+
+<div class="gold-rule"></div>
+
+<section id="overview">
+  <div class="section-tag">01 — Property</div>
+  <div class="section-title">An <em>Irreplaceable</em><br>Corner in Patong</div>
+  <div class="section-lead">A 4-Rai corner plot on the intersection of Phra Metta Road (Sai 3 Kor) and Soi Sansabai Road — one of the last large-format CBD sites remaining in Patong Beach.</div>
+
+  <div class="property-layout fade-in">
+    <div>
+      <div class="prop-facts">
+        <div class="prop-fact"><span class="fact-label">Land Area</span><span class="fact-value gold">4 Rai · 6,400 Sq.m</span></div>
+        <div class="prop-fact"><span class="fact-label">Title</span><span class="fact-value">1,600 Sq.wah (Chanote)</span></div>
+        <div class="prop-fact"><span class="fact-label">Zoning</span><span class="fact-value">Special Commercial Zone</span></div>
+        <div class="prop-fact"><span class="fact-label">Plot Type</span><span class="fact-value">Corner plot — dual road frontage</span></div>
+        <div class="prop-fact"><span class="fact-label">Road 1</span><span class="fact-value">Phra Metta Road (Sai 3 Kor)</span></div>
+        <div class="prop-fact"><span class="fact-label">Road 2</span><span class="fact-value">Soi Sansabai Road</span></div>
+        <div class="prop-fact"><span class="fact-label">Frontage</span><span class="fact-value">80m × 80m approx.</span></div>
+        <div class="prop-fact"><span class="fact-label">Opposite</span><span class="fact-value">Best Western Patong Beach Hotel</span></div>
+        <div class="prop-fact"><span class="fact-label">Current Income</span><span class="fact-value gold">฿72M / year</span></div>
+        <div class="prop-fact"><span class="fact-label">Asking Price</span><span class="fact-value gold">฿2,500,000,000</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="location-card fade-in fade-in-delay-1">
+        <div class="location-title">Location Intelligence</div>
+        <div class="location-item"><div class="loc-icon">🏨</div><div class="loc-text"><strong>Directly opposite</strong>Best Western Patong Beach Hotel — premium frontage visibility</div></div>
+        <div class="location-item"><div class="loc-icon">🌙</div><div class="loc-text"><strong>Walking distance to Bangla Road</strong>Patong's central nightlife and entertainment hub</div></div>
+        <div class="location-item"><div class="loc-icon">🛍</div><div class="loc-text"><strong>Jungceylon Shopping Centre</strong>Major regional retail and F&B anchor nearby</div></div>
+        <div class="location-item"><div class="loc-icon">🥊</div><div class="loc-text"><strong>Patong Boxing Stadium</strong>Iconic tourism attraction, adjacent walking distance</div></div>
+        <div class="location-item"><div class="loc-icon">🛣</div><div class="loc-text"><strong>New Phuket Expressway (Kathu–Patong)</strong>Enhanced connectivity to airport and island-wide access</div></div>
+        <div class="location-item"><div class="loc-icon">✈</div><div class="loc-text"><strong>Phuket International Airport</strong>~30 min drive via expressway, serving 14M+ visitors annually</div></div>
+      </div>
+
+      <div class="map-visual" style="margin-top:1.5rem">
+        <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" style="opacity:0.9">
+          <rect width="500" height="300" fill="#06111F"/>
+          <g stroke="rgba(201,168,76,0.06)" stroke-width="0.5">
+            <line x1="0" y1="60" x2="500" y2="60"/><line x1="0" y1="120" x2="500" y2="120"/>
+            <line x1="0" y1="180" x2="500" y2="180"/><line x1="0" y1="240" x2="500" y2="240"/>
+            <line x1="100" y1="0" x2="100" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/>
+            <line x1="300" y1="0" x2="300" y2="300"/><line x1="400" y1="0" x2="400" y2="300"/>
+          </g>
+          <rect x="220" y="0" width="32" height="300" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+          <rect x="0" y="185" width="500" height="28" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+          <text x="236" y="40" fill="rgba(201,168,76,0.5)" font-size="8" font-family="Outfit,sans-serif" text-anchor="middle" transform="rotate(90,236,40)">Phra Metta Rd</text>
+          <text x="250" y="200" fill="rgba(201,168,76,0.5)" font-size="8" font-family="Outfit,sans-serif" text-anchor="middle">Soi Sansabai</text>
+          <rect x="80" y="80" width="136" height="100" fill="rgba(201,168,76,0.18)" stroke="#C9A84C" stroke-width="1.5"/>
+          <text x="148" y="122" fill="#E8C97A" font-size="13" font-family="Cormorant Garamond,serif" text-anchor="middle" font-weight="600">LAND 4 RAI</text>
+          <text x="148" y="138" fill="rgba(201,168,76,0.7)" font-size="9" font-family="Outfit,sans-serif" text-anchor="middle">6,400 SQ.M</text>
+          <text x="148" y="152" fill="rgba(201,168,76,0.5)" font-size="8" font-family="Outfit,sans-serif" text-anchor="middle">80m × 80m</text>
+          <circle cx="216" cy="180" r="5" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+          <g transform="translate(310,100)">
+            <rect x="0" y="0" width="90" height="38" fill="rgba(13,33,64,0.9)" stroke="rgba(201,168,76,0.3)" stroke-width="0.5" rx="2"/>
+            <text x="8" y="14" fill="#C9A84C" font-size="8" font-family="Outfit,sans-serif" font-weight="500">Best Western</text>
+            <text x="8" y="26" fill="rgba(232,228,218,0.5)" font-size="7" font-family="Outfit,sans-serif">Patong Beach Hotel</text>
+          </g>
+          <g transform="translate(310,155)">
+            <rect x="0" y="0" width="85" height="26" fill="rgba(13,33,64,0.9)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5" rx="2"/>
+            <text x="8" y="17" fill="rgba(232,228,218,0.6)" font-size="7.5" font-family="Outfit,sans-serif">Bangla Road →</text>
+          </g>
+          <g transform="translate(30,230)">
+            <rect x="0" y="0" width="90" height="26" fill="rgba(13,33,64,0.9)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5" rx="2"/>
+            <text x="8" y="17" fill="rgba(232,228,218,0.6)" font-size="7.5" font-family="Outfit,sans-serif">Boxing Stadium →</text>
+          </g>
+          <g transform="translate(455,25)">
+            <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="0.5"/>
+            <text x="0" y="-5" fill="#C9A84C" font-size="9" font-family="Outfit,sans-serif" text-anchor="middle" font-weight="600">N</text>
+            <line x1="0" y1="2" x2="0" y2="9" stroke="rgba(232,228,218,0.3)" stroke-width="1"/>
+          </g>
+          <g transform="translate(30,275)">
+            <line x1="0" y1="0" x2="60" y2="0" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+            <line x1="0" y1="-4" x2="0" y2="4" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+            <line x1="60" y1="-4" x2="60" y2="4" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+            <text x="30" y="-6" fill="rgba(201,168,76,0.5)" font-size="7" font-family="Outfit,sans-serif" text-anchor="middle">200m</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="scenarios">
+  <div class="section-tag">02 — Development</div>
+  <div class="section-title"><em>Four</em> Paths to<br>Exceptional Returns</div>
+  <div class="section-lead">Each scenario has been modelled against current zoning parameters, with sensitivity tested against the proposed 60m height law. The recommended Mixed-Use Tower unlocks the highest risk-adjusted IRR.</div>
+
+  <div class="scenarios-grid fade-in">
+
+    <div class="scenario-card featured">
+      <span class="sc-badge rec">★ Recommended</span>
+      <div class="sc-icon">🏙</div>
+      <div class="sc-name">Mixed-Use Tower</div>
+      <div class="sc-gfa">Retail podium (F1–F3) · Hotel (F4–F10) · Serviced Residences (F11–F15)<br>GFA with 60m law: <strong>~33,600 sq.m</strong></div>
+      <div class="sc-desc">Maximum GFA utilisation. Diversified revenue from retail, hospitality and residences delivers the strongest risk-adjusted return. Ideal for international brand partnership (Marriott, Hyatt, Hilton).</div>
+      <div class="sc-metrics">
+        <div><div class="sc-metric-val">17–22%</div><div class="sc-metric-lbl">IRR (10yr)</div></div>
+        <div><div class="sc-metric-val">7.2%</div><div class="sc-metric-lbl">ROIC</div></div>
+        <div><div class="sc-metric-val">41%</div><div class="sc-metric-lbl">NPM</div></div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <span class="sc-badge alt">High IRR</span>
+      <div class="sc-icon">🏢</div>
+      <div class="sc-name">Condo + Retail</div>
+      <div class="sc-gfa">Luxury branded residences (220–280 units) + Ground-floor retail<br>GFA with 60m law: <strong>~30,700 sq.m</strong></div>
+      <div class="sc-desc">Highest IRR scenario driven by residential sell-out. Strong demand from Thai HNW and international buyers. Fastest capital recovery model, suitable for developers with proven pre-sales capabilities.</div>
+      <div class="sc-metrics">
+        <div><div class="sc-metric-val">20–28%</div><div class="sc-metric-lbl">IRR (10yr)</div></div>
+        <div><div class="sc-metric-val">n/a</div><div class="sc-metric-lbl">ROIC</div></div>
+        <div><div class="sc-metric-val">29%</div><div class="sc-metric-lbl">NPM</div></div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <span class="sc-badge alt">Brand Play</span>
+      <div class="sc-icon">🏨</div>
+      <div class="sc-name">5-Star Hotel</div>
+      <div class="sc-gfa">200–260 keys, rooftop pool bar, spa, F&B, ballroom<br>GFA with 60m law: <strong>~30,000 sq.m</strong></div>
+      <div class="sc-desc">Captures premium tourist ADR in a supply-constrained market. Positioned directly opposite Best Western — opportunity to differentiate upward with a genuine luxury flag and command 30–40% rate premium.</div>
+      <div class="sc-metrics">
+        <div><div class="sc-metric-val">14–18%</div><div class="sc-metric-lbl">IRR (10yr)</div></div>
+        <div><div class="sc-metric-val">6.0%</div><div class="sc-metric-lbl">ROIC</div></div>
+        <div><div class="sc-metric-val">40%</div><div class="sc-metric-lbl">NPM</div></div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <span class="sc-badge alt">Patient Capital</span>
+      <div class="sc-icon">🌿</div>
+      <div class="sc-name">Land Bank + Rental Hold</div>
+      <div class="sc-gfa">Maintain ฿72M/yr rental income · Await 60m height law enactment<br>No development capital required</div>
+      <div class="sc-desc">Collect ฿72M/year while monitoring the planning cycle. The running yield covers holding costs. Sell post-legislation for maximum value crystallisation — estimated ฿800M–฿1,200M planning gain.</div>
+      <div class="sc-metrics">
+        <div><div class="sc-metric-val">8–10%</div><div class="sc-metric-lbl">IRR (hold)</div></div>
+        <div><div class="sc-metric-val">2.88%</div><div class="sc-metric-lbl">ROIC</div></div>
+        <div><div class="sc-metric-val">83%</div><div class="sc-metric-lbl">NPM</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="financials">
+  <div class="section-tag">03 — Financials</div>
+  <div class="section-title">The <em>Numbers</em><br>Speak Clearly</div>
+  <div class="section-lead">Full financial model across all four scenarios — ROIC, IRR and Net Profit Margin benchmarked against a 10-year investment horizon.</div>
+
+  <div class="fin-section fade-in">
+    <div class="fin-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Total Inv.<br>(฿M)</th>
+            <th>Annual<br>EBITDA</th>
+            <th>ROIC</th>
+            <th>IRR<br>10yr</th>
+            <th>NPM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="best-row">
+            <td><strong style="color:#E8C97A">Mixed-Use Tower ★</strong></td>
+            <td class="num">4,700</td>
+            <td class="num highlight">฿340M</td>
+            <td class="num highlight">7.2%</td>
+            <td class="num highlight">17–22%</td>
+            <td class="num highlight">41%</td>
+          </tr>
+          <tr>
+            <td>Condo + Retail</td>
+            <td class="num">4,500</td>
+            <td class="num">฿800M GDV</td>
+            <td class="num">—</td>
+            <td class="num">20–28%</td>
+            <td class="num">29%</td>
+          </tr>
+          <tr>
+            <td>5-Star Hotel</td>
+            <td class="num">4,300</td>
+            <td class="num">฿260M</td>
+            <td class="num">6.0%</td>
+            <td class="num">14–18%</td>
+            <td class="num">40%</td>
+          </tr>
+          <tr>
+            <td>Boutique Lifestyle</td>
+            <td class="num">3,900</td>
+            <td class="num">฿175M</td>
+            <td class="num">4.5%</td>
+            <td class="num">12–16%</td>
+            <td class="num">42%</td>
+          </tr>
+          <tr>
+            <td>Hold (Current)</td>
+            <td class="num">2,500</td>
+            <td class="num">฿60M</td>
+            <td class="num">2.88%</td>
+            <td class="num">8–10%</td>
+            <td class="num">83%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">IRR Comparison</div>
+      <div class="irr-chart" id="irrChart">
+        <div class="irr-item">
+          <div class="irr-header"><span class="irr-name">Condo + Retail</span><span class="irr-value">~24% IRR</span></div>
+          <div class="irr-track"><div class="irr-fill" data-width="100%"></div></div>
+        </div>
+        <div class="irr-item">
+          <div class="irr-header"><span class="irr-name">Mixed-Use Tower</span><span class="irr-value">~19.5% IRR</span></div>
+          <div class="irr-track"><div class="irr-fill" data-width="81%"></div></div>
+        </div>
+        <div class="irr-item">
+          <div class="irr-header"><span class="irr-name">5-Star Hotel</span><span class="irr-value">~16% IRR</span></div>
+          <div class="irr-track"><div class="irr-fill" data-width="67%"></div></div>
+        </div>
+        <div class="irr-item">
+          <div class="irr-header"><span class="irr-name">Boutique Lifestyle</span><span class="irr-value">~14% IRR</span></div>
+          <div class="irr-track"><div class="irr-fill" data-width="58%"></div></div>
+        </div>
+        <div class="irr-item">
+          <div class="irr-header"><span class="irr-name">Hold (Rental)</span><span class="irr-value">~9% IRR</span></div>
+          <div class="irr-track"><div class="irr-fill" data-width="37%"></div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;padding:1.5rem;background:rgba(201,168,76,0.06);border:0.5px solid var(--border-gold)">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem">CFO Assessment</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.7">The Mixed-Use Tower delivers the optimal risk-adjusted return — superior ROIC and EBITDA to the hotel-only scenario, without the execution concentration risk of the full residential sell-out model. For institutional capital seeking a 15%+ IRR with income diversification, this is the preferred vehicle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="height">
+  <div class="section-tag">04 — Regulatory Catalyst</div>
+  <div class="section-title">The <em>60-Metre</em><br>Planning Gain</div>
+  <div class="section-lead">Pending city plan legislation will increase the maximum permissible building height to 60 metres. Acquiring before enactment locks in today's land value while capturing full planning gain — a classic regulatory arbitrage play.</div>
+
+  <div class="height-compare fade-in">
+    <div class="height-card height-before">
+      <div class="h-label">Current Regime</div>
+      <div class="h-val">~23<span class="h-unit">m</span></div>
+      <div class="h-sub">Approx. 6–7 storey limit</div>
+      <div class="h-gfa">~15,360 sq.m GFA</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:0.5rem">At 6 floors × ~2,560 sq.m plate</div>
+    </div>
+    <div class="height-card height-after">
+      <div class="h-label">Proposed New Limit</div>
+      <div class="h-val gold">60<span class="h-unit">m</span></div>
+      <div class="h-sub">~15 storeys · Full tower potential</div>
+      <div class="h-gfa">~33,600 sq.m GFA</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:0.5rem">Mixed-use optimised floor plate</div>
+    </div>
+  </div>
+  <div class="h-uplift fade-in" style="max-width:680px">
+    <div class="h-uplift-arrow">+119%</div>
+    <div class="h-uplift-text">
+      <strong>GFA Uplift on Enactment</strong>
+      From ~15,360 sq.m to ~33,600 sq.m — effectively doubling buildable area on the same land footprint. Estimated incremental development value of ฿800M–฿1,200M. The land acquirer today captures 100% of this planning gain.
+    </div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="section-tag">05 — Risk Assessment</div>
+  <div class="section-title">Risks <em>Identified</em>,<br>Mitigants Defined</div>
+  <div class="section-lead">A comprehensive risk matrix across six dimensions, assessed on current market conditions for a Patong CBD development.</div>
+
+  <div class="risk-grid fade-in">
+    <div class="risk-item">
+      <span class="risk-level low">Very Low</span>
+      <div class="risk-name">Location Risk</div>
+      <div class="risk-desc">CBD Patong — irreplaceable dual-frontage corner plot in Southeast Asia's premier beach resort. No substitute exists at this scale in this market.</div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-level low">Low</span>
+      <div class="risk-name">Tourism Demand</div>
+      <div class="risk-desc">Phuket received 14M+ international visitors in 2024 with continued recovery trajectory. Thailand's tourism policy strongly supportive of Phuket growth.</div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-level low">Low</span>
+      <div class="risk-name">Liquidity / Carry</div>
+      <div class="risk-desc">Running ฿72M/year rental income absorbs all holding costs including debt service at conservative LTV. The asset pays for itself during planning phase.</div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-level med">Medium</span>
+      <div class="risk-name">Regulatory</div>
+      <div class="risk-desc">60m height law pending — delays are possible. However, upside is asymmetric: worst case is current zone, best case is +119% GFA. Mitigate via land banking strategy.</div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-level med">Medium</span>
+      <div class="risk-name">Construction</div>
+      <div class="risk-desc">Cost inflation and skilled labour availability in Phuket construction market. Mitigate through fixed-price EPC contracts and phased construction programme.</div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-level high">Monitor</span>
+      <div class="risk-name">Capital Stack</div>
+      <div class="risk-desc">฿4,000M+ total investment requires robust debt/equity structuring. Interest rate sensitivity at higher leverage ratios requires careful modelling. Recommend ≤50% LTV.</div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="section-tag">06 — Execution Plan</div>
+  <div class="section-title">A Clear <em>Path</em><br>to Value Creation</div>
+  <div class="section-lead">A disciplined 54-month development timeline from acquisition through stabilisation, with key milestones and capital deployment gates.</div>
+
+  <div class="timeline fade-in">
+    <div class="tl-line"></div>
+    <div class="tl-item">
+      <div class="tl-date">Now<br>— Mo. 6</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Acquisition & Due Diligence</div>
+        <div class="tl-desc">Chanote title verification, soil investigation and geotechnical study, EIA scoping assessment, legal structure review (Thai company / BOI / FBA), architect brief and massing study. Maintain ฿72M/year rental income throughout.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Mo. 6<br>— Mo. 18</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Concept Design & Permitting</div>
+        <div class="tl-desc">Schematic design with FAR and height optimisation, EIA submission and approval, construction permit application, hotel brand / residential brand partner engagement (LOI), and planning gain assessment upon height law enactment.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Mo. 18<br>— Mo. 30</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Capital Raise & Pre-Commitment</div>
+        <div class="tl-desc">Syndicate equity and arrange project finance (target ≤50% LTV). Launch pre-sales campaign (residential component) or anchor lease execution (hotel and retail). Target 30% pre-commitment before groundbreak as capital discipline gate.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Mo. 30<br>— Mo. 54</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Construction Phase</div>
+        <div class="tl-desc">24-month construction cycle for mid-rise mixed-use scheme. Phased delivery: retail podium completed first (revenue activation), followed by hotel and residential towers. Dual road frontage enables independent construction access from both Phra Metta Road and Soi Sansabai.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Mo. 54+</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Stabilisation & Exit / Refinance</div>
+        <div class="tl-desc">Achieve occupancy and revenue stabilisation (12–18 months post-opening). Strategic exit options: asset sale to REIT or institutional buyer (target capitalisation rate 6–7%), REIT listing on SET, or long-term income hold for family office / sovereign wealth.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="verdict-section">
+  <div class="verdict-glow"></div>
+  <div class="verdict-eyebrow">CFO Verdict · Investment Committee Summary</div>
+  <div class="verdict-title">A <em>Generational</em><br>Acquisition Opportunity</div>
+  <div class="verdict-desc">This is one of the last available large-format CBD corner plots in Patong at scale. The combination of immediate rental income, transformational height-law upside, and world-class location creates a triple-compounding value thesis rarely encountered in Thai real estate.</div>
+  <div class="verdict-stats">
+    <div class="v-stat"><div class="v-num">17–22%</div><div class="v-lbl">Target IRR</div></div>
+    <div class="v-stat"><div class="v-num">฿72M</div><div class="v-lbl">Year 1 Income</div></div>
+    <div class="v-stat"><div class="v-num">+119%</div><div class="v-lbl">GFA Upside</div></div>
+    <div class="v-stat"><div class="v-num">฿2,500M</div><div class="v-lbl">Entry Price</div></div>
+  </div>
+  <div class="verdict-rec">Strong Buy · Immediate Acquisition Advised</div>
+</div>
+
+<div class="contact-section" id="contact">
+  <div class="contact-layout">
+    <div>
+      <div class="contact-logo">Joe Collection</div>
+      <div class="contact-tagline">Premium Real Estate · Phuket, Thailand</div>
+      <div class="contact-divider"></div>
+      <div class="contact-info-list">
+        <div class="contact-info-item"><span class="ci-label">Contact</span><span class="ci-value">Monthon Mahakijdumrongnukul</span></div>
+        <div class="contact-info-item"><span class="ci-label">Mobile</span><span class="ci-value">+66 80-657-8387</span></div>
+        <div class="contact-info-item"><span class="ci-label">Email</span><span class="ci-value">joecollection.m@gmail.com</span></div>
+        <div class="contact-info-item"><span class="ci-label">Price</span><span class="ci-value" style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:22px">฿2,500,000,000</span></div>
+      </div>
+    </div>
+    <div>
+      <div style="background:rgba(201,168,76,0.06);border:0.5px solid var(--border-gold);padding:2rem;position:relative">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">Property Summary</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="text-align:center;padding:1rem;background:rgba(201,168,76,0.05);border:0.5px solid rgba(201,168,76,0.15)">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)">4 Rai</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px">Land Area</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:rgba(201,168,76,0.05);border:0.5px solid rgba(201,168,76,0.15)">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)">6,400</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px">Sq.m Total</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:rgba(201,168,76,0.05);border:0.5px solid rgba(201,168,76,0.15)">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)">฿72M</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px">Annual Income</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:rgba(201,168,76,0.05);border:0.5px solid rgba(201,168,76,0.15)">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)">Corner</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px">Dual Frontage</div>
+          </div>
+        </div>
+      </div>
+      <div class="disclaimer">This document is a confidential investment memorandum prepared for qualified investors only. All financial projections are estimates based on market comparables and assumptions current at the time of preparation. Projections do not constitute a guarantee of returns. Prospective investors should conduct their own independent due diligence and seek professional advice before making any investment decision.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Scroll animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// IRR bars animate on scroll
+const irrObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.irr-fill').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-width');
+      });
+    }
+  });
+}, { threshold: 0.3 });
+const irrChart = document.getElementById('irrChart');
+if(irrChart) irrObserver.observe(irrChart);
+</script>
+
+</body>
+</html>
